@@ -1,8 +1,19 @@
+#include <cstdlib> //Needed for abs()
+#include <iomanip> //Needed for setw() and setfill()
+#include <iostream> //Needed for cout
 #include "Time.h"
+
+using namespace std;
 
 /***************
  * CONSTRUCTORS *
  ***************/
+
+Time::Time()
+{
+  hours = ZERO;
+  minutes = ZERO;
+}
 
 Time::Time(int h, int m)
   :hours(h), minutes(m)
@@ -12,8 +23,8 @@ Time::Time(int h, int m)
 
 Time::Time(const Time &rhs)
 {
-  hours = new int (*rhs.hours);
-  minutes = new int (*rhs.minutes);
+  hours = rhs.hours;
+  minutes = rhs.minutes;
 }                                                         
 
 /********************
@@ -22,14 +33,10 @@ Time::Time(const Time &rhs)
                                                                                    
 // accessor functions                                                          
 
-int Time::getHours() const
+void Time::displayTime()
 {
-  return hours;
-}
-                                                          
-int Time::getMinutes() const                                                        
-{         
-  return minutes;                                                                      
+  cout << this->getHours() << ":"
+	   << setfill('0') << setw(2) << this->getMinutes();
 }
 
 
@@ -51,8 +58,8 @@ const Time Time::operator=(const Time &rhs)
 {
   if(this != &rhs )
 	{
-	  *hours = *rhs.hours;
-	  *minutes = *rhs.minutes;
+	  hours = rhs.hours;
+	  minutes = rhs.minutes;
 	}
   return *this;
 }
@@ -79,7 +86,7 @@ Time Time::operator -(const Time &rhs)
     
 Time Time::operator ++()                                                            
 {
-  ++inches;
+  ++minutes;
   simplify();
   return *this;
 
@@ -110,7 +117,7 @@ bool Time::operator <(const Time &rhs )
     
 bool Time::operator ==(const Time &rhs)  
 {
-  return (hour == rhs.hours && minutes ==  rhs.minutes)
+  return (hours == rhs.hours && minutes ==  rhs.minutes)
 	? true : false;
 }
 
@@ -138,4 +145,16 @@ void Time::simplify()
 	{
 	  hours = DAY - (abs(hours) % DAY);
 	}
+}
+
+int Time::getHours() const
+{
+  return hours;
+}
+
+int Time::getMinutes() const					\
+
+{
+  return minutes;								\
+
 }

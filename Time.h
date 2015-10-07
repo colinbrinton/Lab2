@@ -4,13 +4,13 @@
 class Time
 {
   public:
-    // constructor
+  // constructors
+    Time();
     Time(int h, int m);
     Time(const Time &rhs);
 
-    // accessor functions
-    int getHours() const;
-    int getMinutes() const;
+    // accessor function
+	void displayTime();
 
     // mutator functions
     void setHours(int h);
@@ -37,5 +37,7 @@ class Time
     
     // helper function to deal with time borders
     void simplify();
+	int getHours() const;
+	int getMinutes() const;
 };
 #endif

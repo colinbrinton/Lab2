@@ -4,8 +4,6 @@ using namespace std;
 
 int main()
 {
-  // int hours, minutes; //To hold example time data
-
   //Testing initialization constructor
   cout << "Creating two Time objects..." << endl;
   
