@@ -12,7 +12,8 @@ Time::Time(int h, int m)
 
 Time::Time(const Time &rhs)
 {
-
+  hours = new int (*rhs.hours);
+  minutes = new int (*rhs.minutes);
 }                                                         
 
 /********************
@@ -48,8 +49,12 @@ void Time::setMinutes(int m)
     
 const Time Time::operator=(const Time &rhs)                                         
 {
-  
-
+  if(this != &rhs )
+	{
+	  *hours = *rhs.hours;
+	  *minutes = *rhs.minutes;
+	}
+  return *this;
 }
     
 Time Time::operator +(const Time&rhs)                                                  

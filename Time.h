@@ -5,18 +5,16 @@ class Time
 {
   public:
     // constructor
-    Time(int h, int m, char c);
+    Time(int h, int m);
     Time(const Time &rhs);
 
     // accessor functions
     int getHours() const;
     int getMinutes() const;
-    char getAMPM() const;
 
     // mutator functions
     void setHours(int h);
     void setMinutes(int m);
-    void setAMPM(char c);
     
     // overloaded operator functions
     const Time operator=(const Time &rhs); 
@@ -36,7 +34,6 @@ class Time
    
     int hours;
     int minutes;
-    char ampm;    
     
     // helper function to deal with time borders
     void simplify();
